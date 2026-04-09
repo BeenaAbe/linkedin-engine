@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
+import type { AuthChangeEvent, Session } from "@supabase/supabase-js";
 
 const AuthContext = createContext<{ userId: string | null }>({ userId: null });
 
@@ -11,13 +12,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const supabase = getBrowserSupabase();
 
-    supabase.auth.getSession().then((result) => {
+    supabase.auth.getSession().then((result: { data: { session: Session | null } }) => {
       setUserId(result.data.session?.user?.id ?? null);
     });
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
+    } = supabase.auth.onAuthStateChange((_event: AuthChangeEvent, session: Session | null) => {
       setUserId(session?.user?.id ?? null);
     });
 
