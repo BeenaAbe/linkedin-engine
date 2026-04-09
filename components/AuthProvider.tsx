@@ -11,9 +11,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const supabase = getBrowserSupabase();
 
-    supabase.auth.getSession().then(({ data }) => {
-      const session = data.session;
-      setUserId(session?.user?.id ?? null);
+    supabase.auth.getSession().then((result) => {
+      setUserId(result.data.session?.user?.id ?? null);
     });
 
     const {
