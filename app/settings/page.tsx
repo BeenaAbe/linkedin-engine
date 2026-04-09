@@ -159,9 +159,9 @@ export default function SettingsPage() {
                         placeholder={
                           channel.channel === "slack"
                             ? "https://hooks.slack.com/services/..."
-                            : channel.channel === "teams"
-                            ? "https://outlook.office.com/webhook/..."
-                            : "https://discord.com/api/webhooks/..."
+                            : channel.channel === "discord"
+                            ? "https://discord.com/api/webhooks/..."
+                            : "https://outlook.office.com/webhook/..."
                         }
                         className="w-full bg-transparent border-b border-[var(--color-border-strong)] focus:border-[var(--color-accent)] py-1 text-[12px] text-[var(--color-ink)] placeholder:text-[var(--color-ink-faint)] font-mono outline-none"
                       />
