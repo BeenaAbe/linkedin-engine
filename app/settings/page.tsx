@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 
 interface ChannelConfig {
-  channel: "slack" | "discord";
+  channel: "slack" | "discord" | "teams";
   label: string;
   description: string;
   enabled: boolean;
